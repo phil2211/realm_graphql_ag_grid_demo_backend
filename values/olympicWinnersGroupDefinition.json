@@ -1,0 +1,22 @@
+{
+    "name": "olympicWinnersGroupDefinition",
+    "value": [
+        {
+            "fieldName": "gold",
+            "accumulator": "sum"
+        },
+        {
+            "fieldName": "silver",
+            "accumulator": "sum"
+        },
+        {
+            "fieldName": "bronze",
+            "accumulator": "sum"
+        },
+        {
+            "fieldName": "total",
+            "accumulator": "sum"
+        }
+    ],
+    "from_secret": false
+}

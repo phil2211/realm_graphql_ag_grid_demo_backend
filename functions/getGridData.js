@@ -1,22 +1,20 @@
-exports = async (input, source) => {
-  const { startRow, endRow, sortModel=[], groups, groupKeys } = input;
-  console.log(JSON.stringify(input));
-  console.log(JSON.stringify(source));
+exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys }) => {
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
   const match = {};
   
-  const group = {
-  
-  };
+  const group = context.functions.execute('translateGroupModel', rowGroupCols);
   
   const sort = {
     $sort: sortModel.length <= 0 ? {_id:1} : context.functions.execute('translateSortModel', sortModel)
   };
   
   // stitch totether the aggregation for the grid
-  const aggregation = [];
+  let aggregation = [];
+  
+  aggregation = rowGroupCols.length <= 0 ? null : aggregation.concat(group);
+  
   aggregation.push(sort);
   
   // paginate the result and get data and total count 
