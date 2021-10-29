@@ -6,7 +6,7 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys })
   const match = {};
   
   const sort = {
-    $sort: sortModel.length <= 0 ? {_id:1} : context.functions.execute('translateSortModel', sortModel)
+    $sort: sortModel.length <= 0 ? {id:1} : context.functions.execute('translateSortModel', sortModel)
   };
   
   // stitch totether the aggregation for the grid

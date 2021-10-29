@@ -16,11 +16,13 @@ exports = function(rowGroupCols) {
         [element.fieldName]: {[`$${element.accumulator}`]: `$${element.fieldName}`}
       });
   });
+  groupBody = Object.assign({}, groupBody, {"id":{"$first": "$_id"}});
+  
   
   const pipeline = [
     {"$group": Object.assign({"_id": groupId}, groupBody)},
     {"$set": project},
-    {"$unset": ["_id"]}
+    {"$unset": ["id"]}
   ];
   
   return pipeline;
