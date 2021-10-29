@@ -58,9 +58,6 @@
     "on_type": "Query",
     "payload_type": {
         "properties": {
-            "_id": {
-                "bsonType": "objectId"
-            },
             "lastRow": {
                 "bsonType": "int"
             },
@@ -69,6 +66,9 @@
                 "items": {
                     "bsonType": "object",
                     "properties": {
+                        "_id": {
+                            "bsonType": "objectId"
+                        },
                         "age": {
                             "bsonType": "int"
                         },
