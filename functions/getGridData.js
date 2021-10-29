@@ -3,6 +3,7 @@ exports = async ({ startRow, endRow, sortModel, groups, groupKeys }) => {
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   const query = {}
   const sort = sortModel.length <= 0 ? {_id:1} : context.functions.execute('translateSortModel', sortModel);
+  console.log(JSON.stringify(sort));
   const lastRow = await collection.count(query);
   const rows = await collection.find(query).sort(sort).skip(startRow).limit(endRow-startRow).toArray();
   
