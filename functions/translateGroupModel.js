@@ -23,7 +23,7 @@ exports = function(rowGroupCols) {
   const pipeline = [
     {"$group": Object.assign({"_id": groupId}, groupBody)},
     {"$set": project},
-    {"$unset": ["_id"]}
+    {"$unset": ["id"]}
   ];
   
   return pipeline;
