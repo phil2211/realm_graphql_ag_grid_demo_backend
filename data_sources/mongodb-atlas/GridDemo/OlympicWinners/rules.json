@@ -6,19 +6,12 @@
             "name": "default",
             "apply_when": {},
             "fields": {
-                "athlete": {
-                    "read": true
-                },
-                "country": {
-                    "read": true
-                },
-                "id": {
-                    "read": true
-                },
-                "sport": {
-                    "read": true
-                }
+                "athlete": {},
+                "country": {},
+                "id": {},
+                "sport": {}
             },
+            "read": true,
             "write": false,
             "insert": false,
             "delete": false,
