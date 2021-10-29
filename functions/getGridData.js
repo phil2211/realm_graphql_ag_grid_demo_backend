@@ -1,5 +1,4 @@
 exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[] }) => {
-  console.log(JSON.stringify(rowGroupCols));
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
@@ -35,7 +34,46 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
       lastRow: {$arrayElemAt: ["$rowCount.lastRow", 0]}
     }});
     
-  console.log(JSON.stringify(aggregation, null, 2));
+  console.log(JSON.stringify(aggregation));
   
   return await collection.aggregate(aggregation).next();
 };
+
+
+/*
+Testdata
+========
+sortModel=[
+  {
+    "sort": "DESC",
+    "colId": "gold"
+  }
+]
+
+rowGroupCols=[
+  {
+    "id": "country",
+    "displayName": "Country",
+    "field": "country"
+  },
+  {
+    "id": "sport",
+    "displayName": "Sport",
+    "field": "sport"
+  }
+]
+
+groupKeys = [
+  "United States",
+  "Swimming"
+]
+
+exports({
+  startRow: 0,
+  endRow: 3,
+  sortModel,
+  rowGroupCols,
+  groupKeys
+})
+
+*/

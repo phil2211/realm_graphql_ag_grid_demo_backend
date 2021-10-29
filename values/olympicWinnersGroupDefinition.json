@@ -16,10 +16,6 @@
         {
             "accumulator": "sum",
             "fieldName": "total"
-        },
-        {
-            "accumulator": "first",
-            "fieldName": "id"
         }
     ],
     "from_secret": false
