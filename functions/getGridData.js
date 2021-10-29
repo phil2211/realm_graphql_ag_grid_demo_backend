@@ -1,10 +1,13 @@
-exports = async ({ startRow, endRow, sortModel=[], groups, groupKeys }) => {
+exports = async ({ startRow, endRow, sortModel=[], groups, groupKeys, query }) => {
+  console.log(JSON.stringify(query));
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
   const match = {};
   
-  const group = {};
+  const group = {
+  
+  };
   
   const sort = {
     $sort: sortModel.length <= 0 ? {_id:1} : context.functions.execute('translateSortModel', sortModel)
@@ -27,7 +30,7 @@ exports = async ({ startRow, endRow, sortModel=[], groups, groupKeys }) => {
       lastRow: {$arrayElemAt: ["$rowCount.lastRow", 0]}
     }});
     
-  console.log(JSON.stringify(aggregation));
+  console.log(JSON.stringify(aggregation, null, 2));
   
   return await collection.aggregate(aggregation).next();
 };

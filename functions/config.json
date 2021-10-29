@@ -7,5 +7,10 @@
     {
         "name": "getGridData",
         "private": false
+    },
+    {
+        "name": "translateGroupModel",
+        "private": true,
+        "run_as_system": true
     }
 ]
