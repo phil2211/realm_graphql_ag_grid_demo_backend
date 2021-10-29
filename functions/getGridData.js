@@ -7,7 +7,7 @@ exports = async ({ startRow, endRow, sortModel, groups, groupKeys }) => {
   const rows = await collection.find(query).sort(sort).skip(startRow).limit(endRow-startRow).toArray();
   
   return {
-    lastRow: lastRow,
+    //lastRow: lastRow,
     rows: rows
   };
 
