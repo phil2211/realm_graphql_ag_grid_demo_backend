@@ -12,9 +12,9 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys })
   // stitch totether the aggregation for the grid
   let aggregation = [];
   
-  aggregation = rowGroupCols.length <= 0 ? 
-    null : 
-    aggregation.concat(context.functions.execute('translateGroupModel', rowGroupCols));
+  if (rowGroupCols.length > 0) {
+    aggregation = aggregation.concat(context.functions.execute('translateGroupModel', rowGroupCols));
+  } 
   
   aggregation.push(sort);
   
