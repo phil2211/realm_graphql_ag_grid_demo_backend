@@ -10,27 +10,24 @@ exports = async ({ startRow, endRow, sortModel=[], groups, groupKeys }) => {
     $sort: sortModel.length <= 0 ? {_id:1} : context.functions.execute('translateSortModel', sortModel)
   };
   
-  const skip = {
-    $skip: startRow
-  };
-  
-  const limit = {
-    $limit: endRow-startRow
-  };
-  
+  // stitch totether the aggregation for the grid
   const aggregation = [];
   aggregation.push(sort);
-  startRow >0 ? aggregation.push(skip): null;
-  aggregation.push(limit);
   
+  // paginate the result and get data and total count 
+  // of aggregation result. When you provide the total count
+  // the infinite scrolling experience will be much more smooth
+  aggregation.push({
+    $facet: {
+      rows: [{$skip: startRow}, {$limit: endRow-startRow}],
+      rowCount: [{$count: 'lastRow'}]
+    }}, {
+    $project: {
+      rows: 1,
+      lastRow: {$arrayElemAt: ["$rowCount.lastRow", 0]}
+    }});
+    
   console.log(JSON.stringify(aggregation));
   
-  // const lastRow = await collection.count(query);
-  const rows = await collection.aggregate(aggregation).toArray();
-  
-  return {
-    //lastRow: lastRow,
-    rows: rows
-  };
-
+  return await collection.aggregate(aggregation).next();
 };
