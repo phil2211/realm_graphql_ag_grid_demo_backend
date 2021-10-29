@@ -1,5 +1,7 @@
-exports = async ({ startRow, endRow, sortModel=[], groups, groupKeys, query }) => {
-  console.log(JSON.stringify(query));
+exports = async (input, source) => {
+  const { startRow, endRow, sortModel=[], groups, groupKeys } = input;
+  console.log(JSON.stringify(input));
+  console.log(JSON.stringify(source));
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
