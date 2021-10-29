@@ -1,0 +1,113 @@
+{
+    "field_name": "getGridData",
+    "function_name": "getGridData",
+    "input_type": {
+        "properties": {
+            "endRow": {
+                "bsonType": "int"
+            },
+            "groupKeys": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "string"
+                }
+            },
+            "rowGroupCols": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "displayName": {
+                            "bsonType": "string"
+                        },
+                        "field": {
+                            "bsonType": "string"
+                        },
+                        "id": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            },
+            "sortModel": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "colId": {
+                            "bsonType": "string"
+                        },
+                        "sort": {
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ],
+                            "title": "sort"
+                        }
+                    }
+                }
+            },
+            "startRow": {
+                "bsonType": "int"
+            }
+        },
+        "title": "GridQueryModel",
+        "type": "object"
+    },
+    "input_type_format": "custom",
+    "on_type": "Query",
+    "payload_type": {
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "lastRow": {
+                "bsonType": "int"
+            },
+            "rows": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "age": {
+                            "bsonType": "int"
+                        },
+                        "athlete": {
+                            "bsonType": "string"
+                        },
+                        "bronze": {
+                            "bsonType": "int"
+                        },
+                        "country": {
+                            "bsonType": "string"
+                        },
+                        "date": {
+                            "bsonType": "string"
+                        },
+                        "gold": {
+                            "bsonType": "int"
+                        },
+                        "id": {
+                            "bsonType": "string"
+                        },
+                        "silver": {
+                            "bsonType": "int"
+                        },
+                        "sport": {
+                            "bsonType": "string"
+                        },
+                        "total": {
+                            "bsonType": "int"
+                        },
+                        "year": {
+                            "bsonType": "int"
+                        }
+                    }
+                }
+            }
+        },
+        "title": "OlympicWinnersGridResponse",
+        "type": "object"
+    },
+    "payload_type_format": "custom"
+}

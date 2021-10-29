@@ -1,0 +1,41 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "age": {
+            "bsonType": "int"
+        },
+        "athlete": {
+            "bsonType": "string"
+        },
+        "bronze": {
+            "bsonType": "int"
+        },
+        "country": {
+            "bsonType": "string"
+        },
+        "date": {
+            "bsonType": "string"
+        },
+        "gold": {
+            "bsonType": "int"
+        },
+        "id": {
+            "bsonType": "string"
+        },
+        "silver": {
+            "bsonType": "int"
+        },
+        "sport": {
+            "bsonType": "string"
+        },
+        "total": {
+            "bsonType": "int"
+        },
+        "year": {
+            "bsonType": "int"
+        }
+    },
+    "title": "OlympicWinner"
+}

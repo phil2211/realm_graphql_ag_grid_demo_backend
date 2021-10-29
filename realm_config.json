@@ -1,0 +1,11 @@
+{
+    "app_id": "olympicwinners-rrxbw",
+    "config_version": 20210101,
+    "name": "OlympicWinners",
+    "location": "DE-FF",
+    "deployment_model": "LOCAL",
+    "environment": "development",
+    "allowed_request_origins": [
+        "http://localhost:3000"
+    ]
+}
