@@ -1,7 +1,7 @@
 exports = function({groupKeys, rowGroupCols}) {
   let match = {};
-  rowGroupCols.forEach((element, index) => {
-    match = Object.assign({}, match, {[element.id]: groupKeys[index]});
+  groupKeys.forEach((element, index) => {
+    match = Object.assign({}, match, {[rowGroupCols[index].id]: element});
   });
   
   return {"$match": match};
