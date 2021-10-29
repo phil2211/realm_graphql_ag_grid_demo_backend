@@ -66,9 +66,6 @@
                 "items": {
                     "bsonType": "object",
                     "properties": {
-                        "_id": {
-                            "bsonType": "objectId"
-                        },
                         "age": {
                             "bsonType": "int"
                         },

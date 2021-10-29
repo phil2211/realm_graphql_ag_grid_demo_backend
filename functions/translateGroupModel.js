@@ -6,7 +6,6 @@ exports = function(rowGroupCols) {
     groupId = Object.assign({}, groupId, {[element.id]: `$${element.id}`});
     project = Object.assign({}, project, {[element.id]: `$_id.${element.id}`});
   });
-  project = Object.assign({}, project, {"_id": "$id"});
   
   let groupBody = {};
   context.values.get("olympicWinnersGroupDefinition").forEach(element => {
@@ -17,13 +16,11 @@ exports = function(rowGroupCols) {
         [element.fieldName]: {[`$${element.accumulator}`]: `$${element.fieldName}`}
       });
   });
-  groupBody = Object.assign({}, groupBody, {"id":{"$first": "$_id"}});
-  
   
   const pipeline = [
     {"$group": Object.assign({"_id": groupId}, groupBody)},
     {"$set": project},
-    {"$unset": ["id"]}
+    {"$unset": ["_id"]}
   ];
   
   return pipeline;
