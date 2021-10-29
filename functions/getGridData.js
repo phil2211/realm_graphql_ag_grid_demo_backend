@@ -1,9 +1,9 @@
-exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys }) => {
+exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[] }) => {
   console.log(JSON.stringify(rowGroupCols));
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
-  const match = {};
+  const match = context.functions.execute('translateMatchModel', {rowGroupCols, groupKeys});
   
   const sort = {
     $sort: sortModel.length <= 0 ? {id:1} : context.functions.execute('translateSortModel', sortModel)
@@ -12,6 +12,10 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys })
   // stitch totether the aggregation for the grid
   let aggregation = [];
   
+  if (groupKeys.length > 0 ) {
+    aggregation.push(match);
+  }
+
   if (rowGroupCols.length > 0) {
     aggregation = aggregation.concat(context.functions.execute('translateGroupModel', rowGroupCols));
   } 
