@@ -15,8 +15,8 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
     aggregation.push(match);
   }
 
-  if (rowGroupCols.length > 0) {
-    aggregation = aggregation.concat(context.functions.execute('translateGroupModel', rowGroupCols));
+  if (rowGroupCols.length > 0 && rowGroupCols.length > groupKeys.length) {
+    aggregation = aggregation.concat(context.functions.execute('translateGroupModel', {rowGroupCols, groupKeys}));
   } 
   
   aggregation.push(sort);
@@ -43,14 +43,14 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
 /*
 Testdata
 ========
-sortModel=[
+const sortModel=[
   {
     "sort": "DESC",
     "colId": "gold"
   }
 ]
 
-rowGroupCols=[
+const rowGroupCols=[
   {
     "id": "country",
     "displayName": "Country",
@@ -63,7 +63,7 @@ rowGroupCols=[
   }
 ]
 
-groupKeys = [
+const groupKeys = [
   "United States",
   "Swimming"
 ]
