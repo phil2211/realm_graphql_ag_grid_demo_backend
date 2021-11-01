@@ -2,7 +2,7 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
-  const match = context.functions.execute('translateMatchModel', {rowGroupCols, groupKeys});
+  const match = context.functions.execute('translateMatchModel', {rowGroupCols, groupKeys: groupKeys.map(key => isNaN(parseInt(key)) ? key : parseInt(key))});
   
   const sort = {
     $sort: sortModel.length <= 0 ? {id:1} : context.functions.execute('translateSortModel', sortModel)
