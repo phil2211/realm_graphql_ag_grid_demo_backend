@@ -9,7 +9,10 @@
             "groupKeys": {
                 "bsonType": "array",
                 "items": {
-                    "bsonType": "string"
+                    "bsonType": [
+                        "string",
+                        "int"
+                    ]
                 }
             },
             "rowGroupCols": {
