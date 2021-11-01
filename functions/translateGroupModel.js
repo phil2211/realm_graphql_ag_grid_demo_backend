@@ -6,8 +6,7 @@ exports = function({rowGroupCols, groupKeys}) {
   const id = [];
   groupId = Object.assign({}, groupId, {[groupsToUse[0].id]: `$${groupsToUse[0].id}`});
   project = Object.assign({}, project, {[groupsToUse[0].id]: `$_id.${groupsToUse[0].id}`});
-  //project = Object.assign({}, project, {"id": {"$concat": id}});
-  
+
   let groupBody = {};
   context.values.get("olympicWinnersGroupDefinition").forEach(element => {
     groupBody = Object.assign(
