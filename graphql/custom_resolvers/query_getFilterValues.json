@@ -1,0 +1,28 @@
+{
+    "field_name": "getFilterValues",
+    "function_name": "getFilterValues",
+    "input_type": {
+        "properties": {
+            "queryInput": {
+                "bsonType": "string"
+            }
+        },
+        "title": "FilterField",
+        "type": "object"
+    },
+    "input_type_format": "custom",
+    "on_type": "Query",
+    "payload_type": {
+        "properties": {
+            "FilterValues": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "string"
+                }
+            }
+        },
+        "title": "FilterValues",
+        "type": "object"
+    },
+    "payload_type_format": "custom"
+}
