@@ -1,4 +1,4 @@
-exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[] }) => {
+exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[], valueCols=[] }) => {
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
@@ -16,7 +16,7 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   }
 
   if (rowGroupCols.length > 0 && rowGroupCols.length > groupKeys.length) {
-    aggregation = aggregation.concat(context.functions.execute('translateGroupModel', {rowGroupCols, groupKeys}));
+    aggregation = aggregation.concat(context.functions.execute('translateGroupModel', {rowGroupCols, groupKeys, valueCols}));
   } 
   
   aggregation.push(sort);
@@ -68,12 +68,40 @@ const groupKeys = [
   "Swimming"
 ]
 
+const valueCols = [
+  {
+    "id": "gold",
+    "aggFunc": "sum",
+    "displayName": "Gold",
+    "field": "gold"
+  },
+  {
+    "id": "silver",
+    "aggFunc": "sum",
+    "displayName": "Silver",
+    "field": "silver"
+  },
+  {
+    "id": "bronze",
+    "aggFunc": "sum",
+    "displayName": "Bronze",
+    "field": "bronze"
+  },
+  {
+    "id": "total",
+    "aggFunc": "sum",
+    "displayName": "Total",
+    "field": "total"
+  }
+]
+
 exports({
   startRow: 0,
   endRow: 3,
   sortModel,
   rowGroupCols,
-  groupKeys
+  groupKeys,
+  valueCols
 })
 
 */

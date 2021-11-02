@@ -1,6 +1,5 @@
-exports = function({rowGroupCols, groupKeys}) {
+exports = function({rowGroupCols, groupKeys, valueCols}) {
   let groupsToUse = rowGroupCols.slice(groupKeys.length, groupKeys.length + 1);
-  console.log(JSON.stringify(groupsToUse))
   let groupId = {};
   let project = {};
   const id = [];
@@ -8,12 +7,12 @@ exports = function({rowGroupCols, groupKeys}) {
   project = Object.assign({}, project, {[groupsToUse[0].id]: `$_id.${groupsToUse[0].id}`});
 
   let groupBody = {};
-  context.values.get("olympicWinnersGroupDefinition").forEach(element => {
+  valueCols.forEach(element => {
     groupBody = Object.assign(
       {},
       groupBody,
       {
-        [element.fieldName]: {[`$${element.accumulator}`]: `$${element.fieldName}`}
+        [element.field]: {[`$${element.aggFunc}`]: `$${element.field}`}
       });
   });
 
@@ -45,10 +44,36 @@ const rowGroupCols=[
 ]
 
 const groupKeys = [
-  "United States",
-  "Swimming"
+  "United States"
 ]
 
-exports({rowGroupCols, groupKeys})
+const valueCols = [
+  {
+    "id": "gold",
+    "aggFunc": "sum",
+    "displayName": "Gold",
+    "field": "gold"
+  },
+  {
+    "id": "silver",
+    "aggFunc": "sum",
+    "displayName": "Silver",
+    "field": "silver"
+  },
+  {
+    "id": "bronze",
+    "aggFunc": "sum",
+    "displayName": "Bronze",
+    "field": "bronze"
+  },
+  {
+    "id": "total",
+    "aggFunc": "sum",
+    "displayName": "Total",
+    "field": "total"
+  }
+]
+
+exports({rowGroupCols, groupKeys, valueCols})
 
 */
