@@ -7,21 +7,21 @@
                 "bsonType": "string"
             }
         },
-        "title": "FilterField",
+        "title": "getFilterValues",
         "type": "object"
     },
     "input_type_format": "custom",
     "on_type": "Query",
     "payload_type": {
         "properties": {
-            "FilterValues": {
+            "filterValues": {
                 "bsonType": "array",
                 "items": {
                     "bsonType": "string"
                 }
             }
         },
-        "title": "FilterValues",
+        "title": "FilterField",
         "type": "object"
     },
     "payload_type_format": "custom"
