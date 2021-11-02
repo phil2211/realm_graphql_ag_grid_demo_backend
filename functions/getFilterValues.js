@@ -1,3 +1,3 @@
 exports = (input) => {
-  return ["Australia", "China", "Sweden"];
+  return {filterValues: ["Australia", "China", "Sweden"]};
 };
