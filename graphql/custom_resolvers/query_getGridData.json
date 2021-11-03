@@ -7,15 +7,18 @@
                 "bsonType": "int"
             },
             "filterModel": {
-                "bsonType": "object",
-                "properties": {
-                    "filterType": {
-                        "bsonType": "string"
-                    },
-                    "values": {
-                        "bsonType": "array",
-                        "items": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "filterFiled": {
                             "bsonType": "string"
+                        },
+                        "values": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "string"
+                            }
                         }
                     }
                 }
