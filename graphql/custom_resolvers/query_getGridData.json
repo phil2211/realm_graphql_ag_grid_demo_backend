@@ -11,7 +11,7 @@
                 "items": {
                     "bsonType": "object",
                     "properties": {
-                        "filterFiled": {
+                        "filterField": {
                             "bsonType": "string"
                         },
                         "values": {
