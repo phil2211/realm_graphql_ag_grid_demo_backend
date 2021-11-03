@@ -6,6 +6,23 @@
             "endRow": {
                 "bsonType": "int"
             },
+            "filterModel": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "filterField": {
+                            "bsonType": "string"
+                        },
+                        "values": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "string"
+                            }
+                        }
+                    }
+                }
+            },
             "groupKeys": {
                 "bsonType": "array",
                 "items": {
@@ -49,6 +66,26 @@
             },
             "startRow": {
                 "bsonType": "int"
+            },
+            "valueCols": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "properties": {
+                        "aggFunc": {
+                            "bsonType": "string"
+                        },
+                        "displayName": {
+                            "bsonType": "string"
+                        },
+                        "field": {
+                            "bsonType": "string"
+                        },
+                        "id": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
             }
         },
         "title": "GridQueryModel",
@@ -58,9 +95,6 @@
     "on_type": "Query",
     "payload_type": {
         "properties": {
-            "_id": {
-                "bsonType": "objectId"
-            },
             "lastRow": {
                 "bsonType": "int"
             },
