@@ -6,6 +6,20 @@
             "endRow": {
                 "bsonType": "int"
             },
+            "filterModel": {
+                "bsonType": "object",
+                "properties": {
+                    "filterType": {
+                        "bsonType": "string"
+                    },
+                    "values": {
+                        "bsonType": "array",
+                        "items": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            },
             "groupKeys": {
                 "bsonType": "array",
                 "items": {

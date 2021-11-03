@@ -2,6 +2,7 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
+  //generate match in grouping case and translate between string and int (because GraphQL schema in Realm only supports exactly one datatype as input)
   const match = context.functions.execute('translateMatchModel', {rowGroupCols, groupKeys: groupKeys.map(key => isNaN(parseInt(key)) ? key : parseInt(key))});
   
   const sort = {
