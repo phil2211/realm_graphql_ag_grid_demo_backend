@@ -15,6 +15,10 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   // stitch totether the aggregation for the grid
   let aggregation = [];
   
+  if (filterModel.length > 0) {
+    aggregation.push(filterMatch);
+  }
+  
   if (groupKeys.length > 0 ) {
     aggregation.push(match);
   }

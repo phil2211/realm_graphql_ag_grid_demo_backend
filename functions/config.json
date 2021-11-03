@@ -1,5 +1,10 @@
 [
     {
+        "name": "translateSortModel",
+        "private": true,
+        "run_as_system": true
+    },
+    {
         "name": "getFilterValues",
         "private": false
     },
@@ -8,22 +13,17 @@
         "private": false
     },
     {
+        "name": "translateFilterMatchModel",
+        "private": true,
+        "run_as_system": true
+    },
+    {
         "name": "translateGroupModel",
         "private": true,
         "run_as_system": true
     },
     {
         "name": "translateMatchModel",
-        "private": true,
-        "run_as_system": true
-    },
-    {
-        "name": "translateSortModel",
-        "private": true,
-        "run_as_system": true
-    },
-    {
-        "name": "translateFilterMatchModel",
         "private": true,
         "run_as_system": true
     }
