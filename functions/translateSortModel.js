@@ -6,3 +6,14 @@ exports = function(sortModel) {
   mongoSortObject = Object.assign({}, mongoSortObject, {id: 1});
   return mongoSortObject;
 };
+
+/*
+Testdata
+========
+const sortModel=[
+  {
+    "sort": "DESC",
+    "colId": "gold"
+  }
+]
+*/
