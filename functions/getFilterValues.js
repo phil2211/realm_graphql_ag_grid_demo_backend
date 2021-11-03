@@ -1,19 +1,18 @@
-exports = ({ queryInput }) => {
+exports = async ({ queryInput }) => {
   const cluster = context.services.get("mongodb-atlas");
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
-  const sortModel = [
-    {
-      colId: queryInput,
-      sort: "ASC"
-    }
-  ]
-
-  const sort = {
-    $sort: context.functions.execute('translateSortModel', sortModel)
-  };
-
-  console.log(sort);
-
-  return {filterValues: ["Australia", "China", "Sweden"]};
+  console.log(JSON.stringify(queryInput));
+  
+  const aggregation = [
+    {$group: {
+      _id: `$${queryInput}`   
+    }},
+    {$sort:{
+      _id: 1
+    }}
+  ];
+  
+  const result = await collection.aggregate(aggregation).toArray();
+  return {filterValues: result.map(entry => entry._id)};
 };
