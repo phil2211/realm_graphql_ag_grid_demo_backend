@@ -1,18 +1,5 @@
 [
     {
-        "name": "translateSortModel",
-        "private": true,
-        "run_as_system": true
-    },
-    {
-        "name": "getFilterValues",
-        "private": false
-    },
-    {
-        "name": "getGridData",
-        "private": false
-    },
-    {
         "name": "translateFilterMatchModel",
         "private": true,
         "run_as_system": true
@@ -26,5 +13,18 @@
         "name": "translateMatchModel",
         "private": true,
         "run_as_system": true
+    },
+    {
+        "name": "translateSortModel",
+        "private": true,
+        "run_as_system": true
+    },
+    {
+        "name": "getFilterValues",
+        "private": false
+    },
+    {
+        "name": "getGridData",
+        "private": false
     }
 ]

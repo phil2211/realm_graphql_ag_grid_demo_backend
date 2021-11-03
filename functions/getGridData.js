@@ -3,7 +3,7 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   const collection = cluster.db("GridDemo").collection("OlympicWinners");
   
   //generate match in filter case
-  const filterMatch = context.functions.execute('translateFilterMatchModel', filterModel);
+  //const filterMatch = context.functions.execute('translateFilterMatchModel', filterModel);
   
   //generate match in grouping case and translate between string and int (because GraphQL schema in Realm only supports exactly one datatype as input)
   const match = context.functions.execute('translateMatchModel', {rowGroupCols, groupKeys: groupKeys.map(key => isNaN(parseInt(key)) ? key : parseInt(key))});
@@ -15,9 +15,11 @@ exports = async ({ startRow, endRow, sortModel=[], rowGroupCols=[], groupKeys=[]
   // stitch totether the aggregation for the grid
   let aggregation = [];
   
+  /*
   if (filterModel.length > 0) {
     aggregation.push(filterMatch);
   }
+  */
   
   if (groupKeys.length > 0 ) {
     aggregation.push(match);
